@@ -1,0 +1,7 @@
+{
+  "name": "iUrban",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
