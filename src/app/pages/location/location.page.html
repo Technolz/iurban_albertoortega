@@ -1,0 +1,59 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <div class="menu-language" (click)="onLanguageChange(inactiveLanguage)">
+                <img [src]="inactiveLanguage.logo" alt="">
+            </div>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <div class="header-image">
+        <ion-img src="https://cms-iurban.com/uploads/images/poi/albufera.jpg6374e66434a1f.png" alt="valencia"></ion-img>
+
+        <div class="image-detail ion-padding">
+            <ion-card-title color="light">
+                ¡Valencia!
+            </ion-card-title>
+            <ion-card-subtitle color="light">
+                Descubre cómo podrías informar y registrar a los turistas con nuestra inteligencia artificial 24/7
+            </ion-card-subtitle>
+        </div>
+    </div>
+
+    <ion-toolbar class="filter-toolbar">
+        <ion-searchbar [debounce]="750" animated="true" placeholder="{{ 'SEARCH' | translate }}"></ion-searchbar>
+        <ion-buttons slot="end">
+            <ion-button id="open-filter-modal" expand="block">
+                <ion-icon name="options-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content no-bounce id="tabs-content" [scrollY]="false">
+    <ion-tabs #tabs (ionTabsDidChange)="onTabChange()">
+        <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="points-of-interest">
+                <ion-icon [name]="selectedTab === 'points-of-interest' ? 'location': 'location-outline'"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button tab="events">
+                <ion-icon [name]="selectedTab === 'events' ? 'calendar': 'calendar-outline'"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button tab="pdfs">
+                <ion-icon [name]="selectedTab === 'pdfs' ? 'document': 'document-outline'"></ion-icon>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
+
+    <ion-modal #modal trigger="open-filter-modal" [initialBreakpoint]="0.75">
+        <ng-template>
+            <ion-content>
+                Hello Filters
+            </ion-content>
+        </ng-template>
+    </ion-modal>
+</ion-content>

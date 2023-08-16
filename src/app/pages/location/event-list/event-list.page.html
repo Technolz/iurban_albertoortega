@@ -1,0 +1,20 @@
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let item of list">
+            <ion-card class="ion-no-margin">
+                <div class="floating-duration ion-margin" *ngIf="item?.durationc">
+                    {{item?.durationc}}
+                </div>
+                <ion-img [src]="item.cover_image" [alt]="item?.name[language]"> </ion-img>
+                <ion-card-header>
+                    <ion-card-subtitle class="ion-text-start">{{item?.name[language]}}</ion-card-subtitle>
+                </ion-card-header>
+            </ion-card>
+        </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="onScrollDetected($event)" [disabled]="!canLoadMore">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <div class="empty-bracket"></div>
+</ion-content>

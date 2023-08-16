@@ -1,0 +1,29 @@
+<ion-content>
+    <ion-grid *ngFor="let category of list" [ngClass]="category?.id === 39 ? 'top-ten' : ''">
+        <ion-item lines="none" [color]="category?.id === 39 ? 'primary': 'light'">
+            <ion-label class="category-title">
+                {{category.name[language]}}
+            </ion-label>
+            <ion-button slot="end" size="small" shape="round" [color]="category?.id === 39 ? 'light' : 'primary'">
+                {{ 'VIEW_ALL' | translate }}
+            </ion-button>
+        </ion-item>
+
+        <ion-row>
+            <swiper-container slides-per-view="1.4" centered-slides="true" space-between="16">
+                <swiper-slide *ngFor="let item of category.data.slice(0, 10)">
+                    <ion-card class="ion-no-margin">
+                        <div class="floating-duration ion-margin" *ngIf="item?.durationc">
+                            {{item?.durationc}}
+                        </div>
+                        <ion-img [src]="item[getCardImage(category)]" [alt]="item?.name[language]"> </ion-img>
+                        <ion-card-header>
+                            <ion-card-subtitle class="ion-text-start">{{item?.name[language]}}</ion-card-subtitle>
+                        </ion-card-header>
+                    </ion-card>
+                </swiper-slide>
+            </swiper-container>
+        </ion-row>
+    </ion-grid>
+    <div class="empty-bracket"></div>
+</ion-content>
